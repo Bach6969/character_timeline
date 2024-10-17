@@ -1,0 +1,123 @@
+/* Background and Text Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1f1f2e, #444b6e);
+    color: #f1f1f1;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #f9d342;
+    margin-bottom: 20px;
+  }
+  
+  /* Main Container for Timeline */
+  .timeline {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  /* Vertical line */
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: #e0e0e0;
+    transform: translateX(-50%);
+  }
+  
+  /* Individual Event Container */
+  .timeline-event {
+    padding: 20px;
+    width: 50%;
+    position: relative;
+    margin: 20px 0;
+    background-color: #283046;
+    color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  /* Hover Effects */
+  .timeline-event:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Alternate Side Layout */
+  .timeline-event:nth-child(odd) {
+    left: 0;
+  }
+  .timeline-event:nth-child(even) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Date Bubble */
+  .timeline-event::before {
+    content: attr(data-date);
+    position: absolute;
+    top: 10px;
+    left: -65px;
+    width: 55px;
+    height: 55px;
+    background-color: #f9d342;
+    color: #333;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 55px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Zoom Date on Hover */
+  .timeline-event:hover::before {
+    transform: scale(1.2) rotate(10deg);
+  }
+  
+  /* Title Styling */
+  .timeline-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #f9d342;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+  }
+  
+  .timeline-event:hover .timeline-title {
+    color: #fffbf2;
+  }
+  
+  /* Description Styling */
+  .timeline-description {
+    color: #b0b0b0;
+    font-size: 1em;
+    line-height: 1.6;
+  }
+  
+  /* Responsive Adjustments */
+  @media screen and (max-width: 768px) {
+    .timeline-event {
+      width: 90%;
+      left: 5%;
+    }
+    .timeline-event:nth-child(even) {
+      transform: translateX(0);
+    }
+    .timeline-event::before {
+      left: -40px;
+    }
+  }
+  
